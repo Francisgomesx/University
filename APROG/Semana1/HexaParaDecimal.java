@@ -1,6 +1,7 @@
+package org.example;
 import java.util.Scanner;
 
-public class Main {
+public class HexaParaDecimal {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -22,3 +23,4 @@ public class Main {
         input.close();
     }
 }
+
