@@ -1,6 +1,7 @@
+package org.example;
 import java.util.Scanner;
 
-public class Main {
+public class NumeroPrimo {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int numero = input.nextInt();
@@ -26,3 +27,4 @@ public class Main {
         input.close();
     }
 }
+
