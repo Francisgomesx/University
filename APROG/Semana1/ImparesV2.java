@@ -1,6 +1,7 @@
+package org.example;
 import java.util.Scanner;
 
-public class Main {
+public class ImapresV2 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -30,3 +31,4 @@ public class Main {
         input.close();
     }
 }
+
