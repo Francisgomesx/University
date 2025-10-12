@@ -1,2 +1,2 @@
-# University works
-My uni work and self-made code
+# Repositório Faculdade 2025
+Contém todos os exercícios e trabalhos da faculdade, organizados por disciplina.
