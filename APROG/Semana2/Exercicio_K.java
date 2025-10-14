@@ -5,5 +5,6 @@ public class Exercicio_K {
         Scanner input = new Scanner(System.in);
 
         int N = input.nextInt();
+
     }
 }
