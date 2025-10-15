@@ -1,7 +1,7 @@
 package org.example;
 import java.util.Scanner;
 
-public class DIvisores {
+public class Divisores {
     public static void main(String[] arg){
         Scanner input = new Scanner(System.in);
         int numero = input.nextInt();
