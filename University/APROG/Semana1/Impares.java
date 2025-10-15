@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.Scanner;
 
 public class Impares {
@@ -28,4 +29,5 @@ public class Impares {
         input.close();
     }
 }
+
 

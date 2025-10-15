@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.Scanner;
 
 public class HexaParaDecimal {
@@ -23,4 +24,5 @@ public class HexaParaDecimal {
         input.close();
     }
 }
+
 
