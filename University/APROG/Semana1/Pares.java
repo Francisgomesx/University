@@ -6,9 +6,11 @@ public class Pares {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
+        System.out.print("Introduza um número: ");
         long numero = input.nextLong();
 
         if (numero < 0) {
+            System.out.println("O número deve ser positivo.");
             input.close();
             return;
         }

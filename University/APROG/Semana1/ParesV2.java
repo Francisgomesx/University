@@ -1,4 +1,3 @@
-package org.example;
 import java.util.Scanner;
 
 public class ParesV2 {
@@ -6,7 +5,6 @@ public class ParesV2 {
         Scanner input = new Scanner(System.in);
 
         while (true) {
-            if (!input.hasNextInt()) break; // segurança extra
             int numero = input.nextInt();
             if (numero <= 0) break;
 
@@ -27,5 +25,6 @@ public class ParesV2 {
         input.close();
     }
 }
+
 
 
