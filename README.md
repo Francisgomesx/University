@@ -38,7 +38,7 @@
 
 <br>
 
-<span style="color:#627972; font-family:monospace">_Feel free to have a look around and share new ideas!_</span>
+<span style="color:#627972; font-family:monospace">_Feel free to have a look around!_</span>
 
 <br>
 
