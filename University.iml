@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/University/APROG/Semana1" isTestSource="false" packagePrefix="org.example" />
       <sourceFolder url="file://$MODULE_DIR$/University/APROG/Semana2" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/University/APROG/Semana3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/University/APROG/Semana4" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
