@@ -11,12 +11,8 @@ public class Exercicio_K {
 
             // verifica divisores de 2 até sqrt(i)
             for (int j = 2; j * j <= i; j++) {
-                if (i % j == 0) {
-                    isPrime = false;
-                    break;
-                }
+                if (i % j == 0) return false;
             }
-
             if (isPrime) {
                 System.out.println(i);
             }
