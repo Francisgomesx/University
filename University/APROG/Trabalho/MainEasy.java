@@ -6,7 +6,7 @@ public class MainEasy {
 
     public static void maineasy (String[] args) {
         // Create scanner to read user input
-        Scanner keyboard = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         
         // Ask for filename
         System.out.print("Enter the filename: ");
@@ -59,7 +59,7 @@ public class MainEasy {
         showTherapyRecommendations(moods, numPeople, numDays);
         showSimilarPeople(moods, numPeople, numDays);
         
-        keyboard.close();
+        input.close();
     }
     
     // ========== b) Show the mood table ==========
