@@ -2,9 +2,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class MoodMapSimple {
+public class MainEasy {
 
-    public static void main(String[] args) {
+    public static void maineasy (String[] args) {
         // Create scanner to read user input
         Scanner keyboard = new Scanner(System.in);
         
