@@ -82,9 +82,9 @@ public class Main {
         System.out.println("b) Mood (level/day(person)");
         
         // Header with day numbers
-        System.out.print("day       : ");
+        System.out.print("day : ");
         for (int day = 0; day < data.numDays; day++) {
-            System.out.printf("%3d ", day);
+            System.out.print(day + " ");
         }
         System.out.println();
         
@@ -99,7 +99,7 @@ public class Main {
         for (int person = 0; person < data.numPeople; person++) {
             System.out.printf("Person #%d : ", person);
             for (int day = 0; day < data.numDays; day++) {
-                System.out.printf("%3d ", data.moodMatrix[person][day]);
+                System.out.print(data.moodMatrix[person][day] + " ");
             }
             System.out.println();
         }
@@ -113,9 +113,9 @@ public class Main {
         double[] averages = calculateDailyAverages(data);
         
         // Header
-        System.out.print("day       : ");
+        System.out.print("day : ");
         for (int day = 0; day < data.numDays; day++) {
-            System.out.printf("%3d ", day);
+            System.out.print(day + " ");
         }
         System.out.println();
         
@@ -127,9 +127,9 @@ public class Main {
         System.out.println();
         
         // Averages
-        System.out.print("mood      ");
+        System.out.print("mood ");
         for (int day = 0; day < data.numDays; day++) {
-            System.out.printf("%4.1f", averages[day]);
+            System.out.printf("%.1f ", averages[day]);
         }
         System.out.println("\n");
     }
@@ -155,7 +155,7 @@ public class Main {
         double[] personAverages = calculatePersonAverages(data);
         
         for (int person = 0; person < data.numPeople; person++) {
-            System.out.printf("Person #%d  : %.1f\n", person, personAverages[person]);
+            System.out.printf("Person #%d : %.1f\n", person, personAverages[person]);
         }
         System.out.println();
     }
@@ -181,9 +181,14 @@ public class Main {
         
         System.out.printf("e) Days with the highest average mood (%.1f) : ", maxAverage);
         
+        boolean first = true;
         for (int day = 0; day < data.numDays; day++) {
             if (dailyAverages[day] == maxAverage) {
-                System.out.print(" " + day);
+                if (!first) {
+                    System.out.print(" ");
+                }
+                System.out.print(day);
+                first = false;
             }
         }
         System.out.println("\n");
@@ -234,7 +239,7 @@ public class Main {
         
         for (int person = 0; person < data.numPeople; person++) {
             if (maxConsecutiveLowDays[person] >= 2) {
-                System.out.printf("Person #%d  : %d consecutive days\n", 
+                System.out.printf("Person #%d : %d consecutive days\n", 
                     person, maxConsecutiveLowDays[person]);
                 foundDisorder = true;
             }
@@ -306,16 +311,26 @@ public class Main {
         }
         System.out.println();
         
-        // Legend
-        System.out.print("      0");
-        int nextLabel = 5;
-        while (nextLabel < data.numDays) {
-            int spaces = 5;
-            for (int i = 0; i < spaces; i++) {
-                System.out.print(" ");
+        // Legend - align labels with day positions (0, 5, 10, etc.)
+        System.out.print("      ");
+        int outputPos = 0;
+        for (int day = 0; day < data.numDays; day++) {
+            if (day == 0 || day % 5 == 0) {
+                // Print the label at the correct output position
+                String label = String.valueOf(day);
+                // If we're not at the right output position yet, add spaces
+                while (outputPos < day) {
+                    System.out.print(" ");
+                    outputPos++;
+                }
+                System.out.print(label);
+                outputPos += label.length();
             }
-            System.out.print(nextLabel);
-            nextLabel += 5;
+        }
+        // Fill remaining positions with spaces if needed
+        while (outputPos < data.numDays) {
+            System.out.print(" ");
+            outputPos++;
         }
         System.out.println("\n");
     }
@@ -349,7 +364,7 @@ public class Main {
         for (int person = 0; person < data.numPeople; person++) {
             String therapy = determineTherapy(maxConsecutiveLowDays[person]);
             if (therapy != null) {
-                System.out.printf("Person #%d  : %s\n", person, therapy);
+                System.out.printf("Person #%d : %s\n", person, therapy);
             }
         }
         System.out.println();
