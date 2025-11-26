@@ -9,7 +9,7 @@ b) & c) need to have the same method for printing the header and separator lines
 
  */
 
-public class Main {
+public class moodMapAnalyzer {
 
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
@@ -93,14 +93,14 @@ public class Main {
         // Header with day numbers
         printAlignedLabel("day", labelWidth);
         for (int day = 0; day < data.numDays; day++) {
-            System.out.printf("%3d ", day);
+            System.out.printf("%3d " + " ", day);
         }
         System.out.println();
 
         // Separator line
         System.out.print("----------|");
         for (int day = 0; day < data.numDays; day++) {
-            System.out.print("---|");
+            System.out.print("----|");
         }
         System.out.println();
 
@@ -109,7 +109,7 @@ public class Main {
             String label = String.format("Person #%d", person);
             printAlignedLabel(label, labelWidth);
             for (int day = 0; day < data.numDays; day++) {
-                System.out.printf("%3d ", data.moodMatrix[person][day]);
+                System.out.printf("%3d " + " ", data.moodMatrix[person][day]);
             }
             System.out.println();
         }
@@ -125,21 +125,21 @@ public class Main {
         // Header
         printAlignedLabel("day", labelWidth);
         for (int day = 0; day < data.numDays; day++) {
-            System.out.printf("%3d ", day);
+            System.out.printf("%3d " + " ", day);
         }
         System.out.println();
 
         // Separator
         System.out.print("----------|");
         for (int day = 0; day < data.numDays; day++) {
-            System.out.print("---|");
+            System.out.print("----|");
         }
         System.out.println();
 
         // Averages
         printAlignedLabel("mood", labelWidth);
         for (int day = 0; day < data.numDays; day++) {
-            System.out.printf("%3.1f ", averages[day]);
+            System.out.printf("%3.1f " + " ", averages[day]);
         }
         System.out.println("\n");
     }
