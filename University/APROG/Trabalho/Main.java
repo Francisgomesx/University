@@ -3,7 +3,14 @@ import java.io.FileNotFoundException;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class moodMapAnalyzer {
+/*
+
+Nomes de variáveis e métodos sugestivos.
+Sem break e exit.
+
+ */
+
+public class Main {
 
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
@@ -80,33 +87,19 @@ public class moodMapAnalyzer {
         displayMostSimilarPeople(data);
     }
 
-    public static void displayBoard(MoodData data, int labelWidth) {
-
-        printAlignedLabel("day", labelWidth);
-        for (int day = 0; day < data.numDays; day++) {
-            System.out.printf("%3d " + " ", day);
-        }
-        System.out.println();
-
-        // Separator line
-        System.out.print("----------|");
-        for (int day = 0; day < data.numDays; day++) {
-            System.out.print("----|");
-        }
-        System.out.println();
-    }
-
     // b) Display the MoodMap
     public static void displayMoodMap(MoodData data, int labelWidth) {
         System.out.println("b) Mood (level/day(person)");
-        displayBoard(data, labelWidth);
+
+        // Header with day numbers
+        printDayHeaderAndSeparator(labelWidth, data.numDays);
 
         // Person data
         for (int person = 0; person < data.numPeople; person++) {
             String label = String.format("Person #%d", person);
             printAlignedLabel(label, labelWidth);
             for (int day = 0; day < data.numDays; day++) {
-                System.out.printf("%3d " + " ", data.moodMatrix[person][day]);
+                System.out.printf("%3d ", data.moodMatrix[person][day]);
             }
             System.out.println();
         }
@@ -118,12 +111,14 @@ public class moodMapAnalyzer {
         System.out.println("c) Average mood each day:");
 
         double[] averages = calculateDailyAverages(data);
-        displayBoard(data, labelWidth);
+
+        // Header
+        printDayHeaderAndSeparator(labelWidth, data.numDays);
 
         // Averages
         printAlignedLabel("mood", labelWidth);
         for (int day = 0; day < data.numDays; day++) {
-            System.out.printf("%3.1f " + " ", averages[day]);
+            System.out.printf("%3.1f ", averages[day]);
         }
         System.out.println("\n");
     }
@@ -369,9 +364,9 @@ public class moodMapAnalyzer {
 
     public static String determineTherapy(int consecutiveLowDays) {
         if (consecutiveLowDays >= 5) {
-            return "psychological support";
+            return "Psychological support";
         } else if (consecutiveLowDays >= 2) {
-            return "listen to music";
+            return "Listen to music";
         } else {
             return null;
         }
@@ -426,4 +421,24 @@ public class moodMapAnalyzer {
     public static void printAlignedLabel(String label, int labelWidth) {
         System.out.printf("%-" + labelWidth + "s : ", label);
     }
+
+    // New helper: print day header and separator (used by b) and c)
+    public static void printDayHeaderAndSeparator(int labelWidth, int numDays) {
+        // Print the left label aligned with other sections
+        printAlignedLabel("day", labelWidth);
+
+        // Day numbers
+        for (int day = 0; day < numDays; day++) {
+            System.out.printf("%3d ", day);
+        }
+        System.out.println();
+
+        // Separator line
+        System.out.print("----------|");
+        for (int day = 0; day < numDays; day++) {
+            System.out.print("---|");
+        }
+        System.out.println();
+    }
+
 }
