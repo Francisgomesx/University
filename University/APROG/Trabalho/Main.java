@@ -6,7 +6,7 @@ import java.util.Scanner;
 /*
 
 Nomes de variáveis e métodos sugestivos.
-Sem break e exit.
+Retirar os comentários na submissão final.
 
  */
 
@@ -442,3 +442,4 @@ public class Main {
     }
 
 }
+
