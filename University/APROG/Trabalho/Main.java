@@ -3,12 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.Locale;
 import java.util.Scanner;
 
-/*
-
-b) & c) need to have the same method for printing the header and separator lines.
-
- */
-
 public class moodMapAnalyzer {
 
     public static void main(String[] args) {
@@ -86,11 +80,8 @@ public class moodMapAnalyzer {
         displayMostSimilarPeople(data);
     }
 
-    // b) Display the MoodMap
-    public static void displayMoodMap(MoodData data, int labelWidth) {
-        System.out.println("b) Mood (level/day(person)");
+    public static void displayBoard(MoodData data, int labelWidth) {
 
-        // Header with day numbers
         printAlignedLabel("day", labelWidth);
         for (int day = 0; day < data.numDays; day++) {
             System.out.printf("%3d " + " ", day);
@@ -103,6 +94,12 @@ public class moodMapAnalyzer {
             System.out.print("----|");
         }
         System.out.println();
+    }
+
+    // b) Display the MoodMap
+    public static void displayMoodMap(MoodData data, int labelWidth) {
+        System.out.println("b) Mood (level/day(person)");
+        displayBoard(data, labelWidth);
 
         // Person data
         for (int person = 0; person < data.numPeople; person++) {
@@ -121,20 +118,7 @@ public class moodMapAnalyzer {
         System.out.println("c) Average mood each day:");
 
         double[] averages = calculateDailyAverages(data);
-
-        // Header
-        printAlignedLabel("day", labelWidth);
-        for (int day = 0; day < data.numDays; day++) {
-            System.out.printf("%3d " + " ", day);
-        }
-        System.out.println();
-
-        // Separator
-        System.out.print("----------|");
-        for (int day = 0; day < data.numDays; day++) {
-            System.out.print("----|");
-        }
-        System.out.println();
+        displayBoard(data, labelWidth);
 
         // Averages
         printAlignedLabel("mood", labelWidth);
