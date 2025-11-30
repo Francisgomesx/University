@@ -1,217 +1,419 @@
-import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.util.Locale;
+import java.util.Scanner;
 
-public class moodMapAnalyzer {
+public class DI_1251425_1250944 {
 
-    private static String nomeFicheiro;
+    public static void main(String[] args) {
+        Locale.setDefault(Locale.US);
+        Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) throws FileNotFoundException {
+        System.out.print("Enter the filename: ");
+        String filename = scanner.nextLine();
 
-        Scanner input = new Scanner(System.in);
-        System.out.print("Introduza o nome do ficheiro: ");
-        nomeFicheiro = input.nextLine();
-        Input();
-        criarOutput();
+        MoodData moodData = readMoodMapFromFile(filename);
+
+        if (moodData != null) {
+            executeMoodAnalysis(moodData);
+        } else {
+            System.out.println("Error reading file.");
+        }
+
+        scanner.close();
     }
 
-    public static void Input() throws FileNotFoundException {
+    public static class MoodData {
+        String description;
+        int numPeople;
+        int numDays;
+        int[][] moodMatrix;
 
-        File file = new File("C:\\Users\\rmvmq\\OneDrive\\Desktop\\Uni\\APROG\\Trabalho pratico\\" + nomeFicheiro);
-        Scanner ficheiro = new Scanner(new File("Input.txt"));
-
-        String descricao = "";
-        int numPessoas = 0;
-        int numDias = 0;
-        int[][] moods = null;
-
-        descricao = ficheiro.nextLine();
-        String[] numeros = ficheiro.nextLine().split(" ");
-        numPessoas = Integer.parseInt(numeros[0]);
-        numDias = Integer.parseInt(numeros[1]);
-        moods = new int[numPessoas][numDias];
-
-        ficheiro.close();
+        MoodData(String description, int numPeople, int numDays, int[][] moodMatrix) {
+            this.description = description;
+            this.numPeople = numPeople;
+            this.numDays = numDays;
+            this.moodMatrix = moodMatrix;
+        }
     }
 
-    public static void tabelaMoods(int[][] moods, int numPessoas, int numDias) {                 // b)
-        System.out.println("b) Mood (nivel/dia(pessoa)");
-        
-        System.out.print("dia       : ");
-        for (int dia = 0; dia < numDias; dia++) {
-            System.out.printf("%3d ", dia);
+    // a)
+    public static MoodData readMoodMapFromFile(String filename) {
+        try {
+            Scanner fileScanner = new Scanner(new File(filename));
+
+            String description = fileScanner.nextLine();
+            String[] dimensions = fileScanner.nextLine().split(" ");
+            int numPeople = Integer.parseInt(dimensions[0]);
+            int numDays = Integer.parseInt(dimensions[1]);
+
+            int[][] moodMatrix = new int[numPeople][numDays];
+
+            for (int person = 0; person < numPeople; person++) {
+                String[] moodValues = fileScanner.nextLine().split(" ");
+                for (int day = 0; day < numDays; day++) {
+                    moodMatrix[person][day] = Integer.parseInt(moodValues[day]);
+                }
+            }
+
+            fileScanner.close();
+            return new MoodData(description, numPeople, numDays, moodMatrix);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + filename);
+            return null;
+        }
+    }
+
+    public static void executeMoodAnalysis(MoodData data) {
+        int labelWidth = determineLabelWidth(data);
+        displayMoodMap(data, labelWidth);
+        displayAverageMoodPerDay(data, labelWidth);
+        displayAverageMoodPerPerson(data, labelWidth);
+        displayDaysWithHighestMood(data);
+        displayMoodLevelPercentages(data);
+        displayEmotionalDisorders(data, labelWidth);
+        displayMoodCharts(data);
+        displayRecommendedTherapy(data, labelWidth);
+        displayMostSimilarPeople(data);
+    }
+
+    public static void displayBoard(MoodData data, int labelWidth) {
+
+        printAlignedLabel("day", labelWidth);
+        for (int day = 0; day < data.numDays; day++) {
+            System.out.printf("%3d " + " ", day);
         }
         System.out.println();
 
         System.out.print("----------|");
-        for (int dia = 0; dia < numDias; dia++) {
-            System.out.print("---|");
-        }
-        System.out.println();
-        
-        for (int pessoa = 0; pessoa < numPessoas; pessoa++) {
-            System.out.printf("Pessoa #%d : ", pessoa);
-            for (int dia = 0; dia < numDias; dia++) {
-                System.out.printf("%3d ", moods[pessoa][dia]);
-            }
-            System.out.println();
+        for (int day = 0; day < data.numDays; day++) {
+            System.out.print("----|");
         }
         System.out.println();
     }
 
-    public static void mediaDiaria(int[][] moods, int numPessoas, int numDias) {                // c)
-        System.out.println("c) Média diária dos moods:");
-        double[] mediaDiaria = new double[numDias];
+    // b)
+    public static void displayMoodMap(MoodData data, int labelWidth) {
+        System.out.println("b) Mood (level/day(person)");
+        displayBoard(data, labelWidth);
 
-        for (int dia = 0; dia < numDias; dia++) {
-            int soma = 0;
-            for (int pessoa = 0; pessoa < numPessoas; pessoa++) {
-                soma += moods[pessoa][dia];
-            }
-            mediaDiaria[dia] = (double) soma / numPessoas;
-
-            System.out.print("dia       : ");
-            for (dia = 0; dia < numDias; dia++) {
-                System.out.printf("%3d ", dia);
+        // Person data
+        for (int person = 0; person < data.numPeople; person++) {
+            String label = String.format("Person #%d", person);
+            printAlignedLabel(label, labelWidth);
+            for (int day = 0; day < data.numDays; day++) {
+                System.out.printf("%3d " + " ", data.moodMatrix[person][day]);
             }
             System.out.println();
-
-            System.out.print("----------|");
-            for (dia = 0; dia < numDias; dia++) {
-                System.out.print("---|");
-            }
-            System.out.println();
-
-            System.out.print("mood      ");
-            for (dia = 0; dia < numDias; dia++) {
-                System.out.printf("%5.1f", mediaDiaria[dia]);
-            }
-            System.out.println("%n%n");
         }
+        System.out.println();
     }
 
-    public static void mediasPessoais(int[][] moods, int numPessoas, int numDias) {              // d)
+    // c)
+    public static void displayAverageMoodPerDay(MoodData data, int labelWidth) {
+        System.out.println("c) Average mood each day:");
 
+        double[] averages = calculateDailyAverages(data);
+        displayBoard(data, labelWidth);
+
+        printAlignedLabel("mood", labelWidth);
+        for (int day = 0; day < data.numDays; day++) {
+            System.out.printf("%3.1f " + " ", averages[day]);
+        }
+        System.out.println("\n");
     }
 
-    public static void melhoresDias(int[][] moods, int numPessoas, int numDias) {                // e)
-        double[] mediaDiaria = new double[numDias];
+    public static double[] calculateDailyAverages(MoodData data) {
+        double[] averages = new double[data.numDays];
 
-        for (int dia = 0; dia < numDias; dia++) {
-            int soma = 0;
-            for (int person = 0; person < numPessoas; person++) {
-                soma = soma + moods[person][dia];
+        for (int day = 0; day < data.numDays; day++) {
+            int sum = 0;
+            for (int person = 0; person < data.numPeople; person++) {
+                sum += data.moodMatrix[person][day];
             }
-            mediaDiaria[dia] = (double) soma / numPessoas;
+            averages[day] = (double) sum / data.numPeople;
         }
 
-        double maior = mediaDiaria[0];
-        for (int day = 1; day < numDias; day++) {
-            if (mediaDiaria[day] > maior) {
-                maior = mediaDiaria[day];
+        return averages;
+    }
+
+    // d)
+    public static void displayAverageMoodPerPerson(MoodData data, int labelWidth) {
+        System.out.println("d) Average of each person's mood:");
+
+        double[] personAverages = calculatePersonAverages(data);
+
+        for (int person = 0; person < data.numPeople; person++) {
+            String label = String.format("Person #%d", person);
+            System.out.printf("%-" + labelWidth + "s : %.1f\n", label, personAverages[person]);
+        }
+        System.out.println();
+    }
+
+    public static double[] calculatePersonAverages(MoodData data) {
+        double[] averages = new double[data.numPeople];
+
+        for (int person = 0; person < data.numPeople; person++) {
+            int sum = 0;
+            for (int day = 0; day < data.numDays; day++) {
+                sum += data.moodMatrix[person][day];
             }
+            averages[person] = (double) sum / data.numDays;
         }
 
-        System.out.printf("e) Dias com melhor média de mood (%.1f) : ", maior);
-        for (int dia = 0; dia < numDias; dia++) {
-            if (mediaDiaria[dia] == maior) {
-                System.out.print(" " + dia);
+        return averages;
+    }
+
+    // e)
+    public static void displayDaysWithHighestMood(MoodData data) {
+        double[] dailyAverages = calculateDailyAverages(data);
+        double maxAverage = findMaxValue(dailyAverages);
+
+        System.out.printf("e) Days with the highest average mood (%.1f) : ", maxAverage);
+
+        boolean first = true;
+        for (int day = 0; day < data.numDays; day++) {
+            if (dailyAverages[day] == maxAverage) {
+                if (!first) {
+                    System.out.print(" ");
+                }
+                System.out.print(day);
+                first = false;
             }
         }
         System.out.println("\n");
     }
 
-    public static void percentagensMood(int[][] moods, int numPessoas, int numDias) {           // f)
-
-    }
-
-    public static void problemasEmocionais(int[][] moods, int numPessoas, int numDias) {        // g)
-        System.out.println("g) Pessoas com problemas emocionais:");
-        boolean existe = false;
-
-        for (int pessoa = 0; pessoa < numPessoas; pessoa++) {
-            int maiorSequencia = 0;
-            int sequencia = 0;
-
-            for (int dia = 0; dia < numDias; dia++) {
-
-                if (moods[pessoa][dia] < 3) {
-
-                    sequencia = sequencia + 1;
-                    if (sequencia > maiorSequencia) {
-
-                        maiorSequencia = sequencia;
-                    }
-                } else {
-                    sequencia = 0;
-                }
-            }
-
-            if (maiorSequencia >= 2) {
-                System.out.printf("Pessoa #%d  : %d dias consecutivos%n", pessoa, maiorSequencia);
-                existe = true;
+    public static double findMaxValue(double[] array) {
+        double max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
             }
         }
+        return max;
+    }
 
-        if (existe == false) {
-            System.out.println("Ninguém");
+    // f)
+    public static void displayMoodLevelPercentages(MoodData data) {
+        System.out.println("f) Percentage of mood levels:");
+
+        int[] moodCounts = countMoodLevels(data);
+        int totalEntries = data.numPeople * data.numDays;
+
+        for (int mood = 5; mood >= 1; mood--) {
+            double percentage = (moodCounts[mood] * 100.0) / totalEntries;
+            System.out.printf("Mood #%d: %.1f%%\n", mood, percentage);
         }
         System.out.println();
     }
 
-    public static void graficosMoods(int[][] moods, int numPessoas, int numDias) {               // h)
+    public static int[] countMoodLevels(MoodData data) {
+        int[] counts = new int[6]; // Index 0-5, we'll use 1-5
 
+        for (int person = 0; person < data.numPeople; person++) {
+            for (int day = 0; day < data.numDays; day++) {
+                counts[data.moodMatrix[person][day]]++;
+            }
+        }
+
+        return counts;
     }
 
-    public static void recomendacoesTerapia(int[][] moods, int numPessoas, int numDias) {       // i)
-        System.out.println("i) Recomenda-se Terapia:");
+    // g)
+    public static void displayEmotionalDisorders(MoodData data, int labelWidth) {
+        System.out.println("g) People with emotional disorders:");
 
-        for (int pessoa = 0; pessoa < numPessoas; pessoa++) {
-            // Count longest streak of low mood days
-            int maiorSequencia = 0;
-            int sequencia = 0;
+        int[] maxConsecutiveLowDays = calculateMaxConsecutiveLowMoodDays(data);
+        boolean foundDisorder = false;
 
-            for (int dia = 0; dia < numDias; dia++) {
-                if (moods[pessoa][dia] < 3) {
-                    sequencia = sequencia + 1;
-                    if (sequencia > maiorSequencia) {
-                        maiorSequencia = sequencia;
+        for (int person = 0; person < data.numPeople; person++) {
+            if (maxConsecutiveLowDays[person] >= 2) {
+                String label = String.format("Person #%d", person);
+                System.out.printf("%-" + labelWidth + "s : %d consecutive days\n",
+                        label, maxConsecutiveLowDays[person]);
+                foundDisorder = true;
+            }
+        }
+
+        if (!foundDisorder) {
+            System.out.println("nobody");
+        }
+        System.out.println();
+    }
+
+    public static int[] calculateMaxConsecutiveLowMoodDays(MoodData data) {
+        int[] maxConsecutive = new int[data.numPeople];
+
+        for (int person = 0; person < data.numPeople; person++) {
+            int currentConsecutive = 0;
+            int maxForPerson = 0;
+
+            for (int day = 0; day < data.numDays; day++) {
+                if (data.moodMatrix[person][day] < 3) {
+                    currentConsecutive++;
+                    if (currentConsecutive > maxForPerson) {
+                        maxForPerson = currentConsecutive;
                     }
                 } else {
-                    sequencia = 0;
+                    currentConsecutive = 0;
                 }
             }
 
-            if (maiorSequencia >= 5) {
-                System.out.printf("Pessoa #%d  : suporte psicológico%n", pessoa);
-            } else if (maiorSequencia >= 2) {
-                System.out.printf("Pessoa #%d  : ouvir música%n", pessoa);
+            maxConsecutive[person] = maxForPerson;
+        }
+
+        return maxConsecutive;
+    }
+
+    // h)
+    public static void displayMoodCharts(MoodData data) {
+        System.out.println("h) People's Mood Level Charts:");
+
+        for (int person = 0; person < data.numPeople; person++) {
+            displayPersonMoodChart(data, person);
+        }
+    }
+
+    public static void displayPersonMoodChart(MoodData data, int person) {
+        System.out.printf("Person #%d:\n", person);
+
+        int minMood = findMinMoodForPerson(data, person);
+        int maxMood = findMaxMoodForPerson(data, person);
+
+        for (int mood = maxMood; mood >= minMood; mood--) {
+            System.out.printf("%4d |", mood);
+
+            for (int day = 0; day < data.numDays; day++) {
+                if (data.moodMatrix[person][day] == mood) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.print("Mood +");
+        for (int i = 0; i < data.numDays; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        System.out.print("      ");
+        int outputPos = 0;
+        for (int day = 0; day < data.numDays; day++) {
+            if (day % 5 == 0) {
+                String label = String.valueOf(day);
+                while (outputPos < day) {
+                    System.out.print(" ");
+                    outputPos++;
+                }
+                System.out.print(label);
+                outputPos += label.length();
+            }
+        }
+        while (outputPos < data.numDays) {
+            System.out.print(" ");
+            outputPos++;
+        }
+        System.out.println("\n");
+    }
+
+    public static int findMinMoodForPerson(MoodData data, int person) {
+        int min = data.moodMatrix[person][0];
+        for (int day = 1; day < data.numDays; day++) {
+            if (data.moodMatrix[person][day] < min) {
+                min = data.moodMatrix[person][day];
+            }
+        }
+        return min;
+    }
+
+    public static int findMaxMoodForPerson(MoodData data, int person) {
+        int max = data.moodMatrix[person][0];
+        for (int day = 1; day < data.numDays; day++) {
+            if (data.moodMatrix[person][day] > max) {
+                max = data.moodMatrix[person][day];
+            }
+        }
+        return max;
+    }
+
+    // i)
+    static void displayRecommendedTherapy(MoodData data, int labelWidth) {
+        System.out.println("i) Recommended therapy:");
+
+        int[] maxConsecutiveLowDays = calculateMaxConsecutiveLowMoodDays(data);
+
+        for (int person = 0; person < data.numPeople; person++) {
+            String therapy = determineTherapy(maxConsecutiveLowDays[person]);
+            if (therapy != null) {
+                String label = String.format("Person #%d", person);
+                System.out.printf("%-" + labelWidth + "s : %s\n", label, therapy);
             }
         }
         System.out.println();
     }
 
-    public static void pessoasSemelhantes(int[][] moods, int numPessoas, int numDias) {         // j)
-
+    public static String determineTherapy(int consecutiveLowDays) {
+        if (consecutiveLowDays >= 5) {
+            return "psychological support";
+        } else if (consecutiveLowDays >= 2) {
+            return "listen to music";
+        } else {
+            return null;
+        }
     }
 
-    public static void criarOutput(int numPessoas, int numDias, int[][] moods, String[] numeros) throws FileNotFoundException {
+    // j)
+    public static void displayMostSimilarPeople(MoodData data) {
+        System.out.print("j) People with the most similar moods: ");
 
-        String nomeOutput = nomeFicheiro.replace("Input", "") + "Output.txt";
-        File ficheiroOutput = new File(nomeOutput);
-        PrintWriter writer = new PrintWriter(ficheiroOutput);
+        int maxSimilarity = 0;
+        int person1 = -1;
+        int person2 = -1;
 
-        tabelaMoods(moods, numPessoas, numDias);
-        mediaDiaria(moods, numPessoas, numDias);
-        mediasPessoais(moods, numPessoas, numDias);
-        melhoresDias(moods, numPessoas, numDias);
-        percentagensMood(moods, numPessoas, numDias);
-        problemasEmocionais(moods, numPessoas, numDias);
-        graficosMoods(moods, numPessoas, numDias);
-        recomendacoesTerapia(moods, numPessoas, numDias);
-        pessoasSemelhantes(moods, numPessoas, numDias);
+        for (int p1 = 0; p1 < data.numPeople - 1; p1++) {
+            for (int p2 = p1 + 1; p2 < data.numPeople; p2++) {
+                int similarity = countSameMoodDays(data, p1, p2);
+                if (similarity > maxSimilarity) {
+                    maxSimilarity = similarity;
+                    person1 = p1;
+                    person2 = p2;
+                }
+            }
+        }
 
-        writer.close();
+        if (maxSimilarity > 0) {
+            System.out.printf("(Person #%d and Person #%d have the same mood on %d days)\n",
+                    person1, person2, maxSimilarity);
+        } else {
+            System.out.println("None");
+        }
+    }
+
+    public static int countSameMoodDays(MoodData data, int person1, int person2) {
+        int count = 0;
+        for (int day = 0; day < data.numDays; day++) {
+            if (data.moodMatrix[person1][day] == data.moodMatrix[person2][day]) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static int determineLabelWidth(MoodData data) {
+        if (data.numPeople == 0) {
+            return 8;
+        }
+        String longestPersonLabel = String.format("Person #%d", data.numPeople - 1);
+        int longest = Math.max("mood".length(), longestPersonLabel.length());
+        return Math.max(8, longest);
+    }
+
+    public static void printAlignedLabel(String label, int labelWidth) {
+        System.out.printf("%-" + labelWidth + "s : ", label);
     }
 }
