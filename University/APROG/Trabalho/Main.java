@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 Nomes de variáveis e métodos sugestivos.
 Retirar os comentários na submissão final.
+Possivelmente colocar em português (ideia só).
 
  */
 
