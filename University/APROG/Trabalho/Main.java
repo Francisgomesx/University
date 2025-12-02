@@ -3,14 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.Locale;
 import java.util.Scanner;
 
-/*
-
-Nomes de variáveis e métodos sugestivos.
-Retirar os comentários na submissão final.
-Possivelmente colocar em português (ideia só).
-
- */
-
 public class Main {
 
     public static void main(String[] args) {
@@ -443,4 +435,5 @@ public class Main {
     }
 
 }
+
 
