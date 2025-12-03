@@ -37,6 +37,7 @@ public class DI_1251425_1250944 {
         }
     }
 
+    //a)
     public static MoodData readMoodMapFromFile(String filename) {
         try {
             Scanner fileScanner = new Scanner(new File(filename));
@@ -92,6 +93,7 @@ public class DI_1251425_1250944 {
         System.out.println();
     }
 
+    //b)
     public static void displayMoodMap(MoodData data, int labelWidth) {
         System.out.println("b) Mood (level/day(person))");
         displayBoard(data, labelWidth);
@@ -107,7 +109,7 @@ public class DI_1251425_1250944 {
         System.out.println();
     }
 
-    
+    //c)
     public static void displayAverageMoodPerDay(MoodData data, int labelWidth) {
         System.out.println("c) Average mood each day:");
 
@@ -135,7 +137,7 @@ public class DI_1251425_1250944 {
         return averages;
     }
 
-
+    //d)
     public static void displayAverageMoodPerPerson(MoodData data, int labelWidth) {
         System.out.println("d) Average of each person's mood:");
 
@@ -162,7 +164,7 @@ public class DI_1251425_1250944 {
         return averages;
     }
 
-    
+    //e)
     public static void displayDaysWithHighestMood(MoodData data) {
         double[] dailyAverages = calculateDailyAverages(data);
         double maxAverage = findMaxValue(dailyAverages);
@@ -192,7 +194,7 @@ public class DI_1251425_1250944 {
         return max;
     }
 
-    
+    //f)
     public static void displayMoodLevelPercentages(MoodData data) {
         System.out.println("f) Percentage of mood levels:");
 
@@ -218,7 +220,7 @@ public class DI_1251425_1250944 {
         return counts;
     }
 
-    
+    //g)
     public static void displayEmotionalDisorders(MoodData data, int labelWidth) {
         System.out.println("g) People with emotional disorders:");
 
@@ -264,7 +266,7 @@ public class DI_1251425_1250944 {
         return maxConsecutive;
     }
 
-    
+    //h)
     public static void displayMoodCharts(MoodData data) {
         System.out.println("h) People's Mood Level Charts:");
 
@@ -338,7 +340,7 @@ public class DI_1251425_1250944 {
         return max;
     }
 
-    
+    //i)
     public static void displayRecommendedTherapy(MoodData data, int labelWidth) {
         System.out.println("i) Recommended therapy:");
 
@@ -364,7 +366,7 @@ public class DI_1251425_1250944 {
         }
     }
 
-    
+    //j)
     public static void displayMostSimilarPeople(MoodData data) {
         System.out.print("j) People with the most similar moods: ");
 
