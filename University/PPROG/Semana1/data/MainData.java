@@ -1,5 +1,3 @@
-package data;
-
 public class MainData {
 
     static void main() {

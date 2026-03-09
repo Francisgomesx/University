@@ -1,5 +1,3 @@
-package Cumprimentar;
-
 /**
  * Representar uma pessoa através do nome e idade.
  *

@@ -1,5 +1,3 @@
-package Cumprimentar;
-
 public class MainPessoa {
 
     static void main() {

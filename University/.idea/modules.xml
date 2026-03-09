@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/APROG/APROG.iml" filepath="$PROJECT_DIR$/APROG/APROG.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LAPR1/LAPR1.iml" filepath="$PROJECT_DIR$/LAPR1/LAPR1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PPROG/PPROG.iml" filepath="$PROJECT_DIR$/PPROG/PPROG.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PPROG/Semana1/Semana1.iml" filepath="$PROJECT_DIR$/PPROG/Semana1/Semana1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Semana1.1.iml" filepath="$PROJECT_DIR$/Semana1.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PPROG/Semana2/Semana2.iml" filepath="$PROJECT_DIR$/PPROG/Semana2/Semana2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/University.iml" filepath="$PROJECT_DIR$/.idea/University.iml" />
+    </modules>
+  </component>
+</project>
