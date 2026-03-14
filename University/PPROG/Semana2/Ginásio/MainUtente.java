@@ -1,3 +1,5 @@
+package Ginásio;
+
 public class MainUtente {
 
     static void main() {

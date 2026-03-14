@@ -1,3 +1,5 @@
+package Ginásio;
+
 /**
  * Representa um utente de um ginásio.
  *
