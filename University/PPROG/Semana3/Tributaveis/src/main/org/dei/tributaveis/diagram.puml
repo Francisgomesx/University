@@ -1,0 +1,34 @@
+@startuml
+interface Cores {
+    +AZUL
+    +CINZENTO
+    +ENCARNADO
+    +VERDE
+}
+
+interface Tributavel {
+    +calcularImposto() : double
+}
+
+class Veiculo {
+    -matricula : String
+    -cilindrada : int
+    -cor : String
+    +calcularImposto() : double
+}
+
+class Moradia {
+    -morada : String
+    -area : float
+    -cor : String
+    +calcularImposto() : double
+
+}
+
+Veiculo ..|> Cores
+Veiculo ..|> Tributavel
+
+Moradia ..|> Cores
+Moradia ..|> Tributavel
+
+@enduml

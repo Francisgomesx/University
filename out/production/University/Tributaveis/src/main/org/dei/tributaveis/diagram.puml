@@ -1,0 +1,24 @@
+@startuml
+interface Cores {
+    +AZUL
+    +CINZENTO
+    +ENCARNADO
+    +VERDE
+}
+
+class Veiculo {
+    -matricula : String
+    -cilindrada : int
+    -cor : String
+}
+
+class Moradia {
+    -morada : String
+    -area : float
+    -cor : String
+}
+
+Veiculo ..|> Cores
+Moradia ..|> Cores
+
+@enduml

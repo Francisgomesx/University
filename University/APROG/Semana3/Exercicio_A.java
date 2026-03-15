@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class Exercicio_A {
 
     public static int contarAlgarismos(int num) {
         if (num == 0) return 1;

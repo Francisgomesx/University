@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class Exercicio_B {
 
     public static void imprimir(String nome, int aprovados, int total) {
         System.out.println("Subject: " + nome);
