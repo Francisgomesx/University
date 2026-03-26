@@ -1,0 +1,48 @@
+@startuml
+
+abstract class Contador{
+- id : String
+- cliente : String
+- consumo : double
++ calcularConsumo()
+}
+
+abstract class ContadorEletricidade{
+- static totalEletricidade=0
+}
+
+class ContadorGas{
+- custoUnitario=0.8 : final static double
++ calcularConsumo()
++ setCustoUnitario()
+}
+
+class EletricidadeSimples{
+- potenciaContratada : double
+- final static double potencia=6.9
+- static double custoUnitario1=0.13
+- static double custoUnitario2=0.16
+
++ calcularConsumo()
++ setCustoUnitario1()
++ setCustoUnitario2()
+}
+
+class EletricidadeBihorario{
+- double consumo1
+- double consumo2
+- potenciaContratada : double
+- final static double potencia=6.9
+- final static custoVazio=0.066
+- final static custoForaVazio=0.14
+
++ calcularConsumo()
++ setCustoUnitario1()
++ setCustoUnitario2()
+}
+
+Contador <|-- ContadorGas
+Contador <|-- ContadorEletricidade
+ContadorEletricidade <|-- EletricidadeBihorario
+ContadorEletricidade <|-- EletricidadeSimples
+@enduml
