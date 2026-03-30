@@ -2,15 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d980720d-020d-4dc8-8336-4a00ba649ee9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Semana5/VencimentosComComparable/src/test/java/TrabalhadorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LAPR2" beforeDir="false" afterPath="$PROJECT_DIR$/../LAPR2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/PPROG.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PPROG.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Semana5/VencimentosComComparable/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Semana5/VencimentosComComparable/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -29,14 +37,24 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.MainVencimentos.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.TrabalhadorTest.executor": "Run",
+    "JUnit.TrabalhadorTest.testCalcularVencimentoTrabalhadorHora.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/francisgomesx/Documents/ISEP/University/University/PPROG",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
@@ -60,8 +78,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TrabalhadorTest.testCalcularVencimentoTrabalhadorHora" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PPROG" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.TrabalhadorTest" />
+      <option name="METHOD_NAME" value="testCalcularVencimentoTrabalhadorHora" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TrabalhadorTest.testCalcularVencimentoTrabalhadorHora" />
         <item itemvalue="Application.MainVencimentos" />
       </list>
     </recent_temporary>
@@ -83,7 +118,11 @@
       <updated>1773529176147</updated>
       <workItem from="1773529177815" duration="4000" />
       <workItem from="1774513468535" duration="765000" />
-      <workItem from="1774514348481" duration="3765000" />
+      <workItem from="1774514348481" duration="4672000" />
+      <workItem from="1774522170338" duration="22000" />
+      <workItem from="1774909534446" duration="713000" />
+      <workItem from="1774910280282" duration="95000" />
+      <workItem from="1774910401746" duration="1419000" />
     </task>
     <servers />
   </component>
