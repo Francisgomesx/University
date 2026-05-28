@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -27,25 +29,13 @@ public class HeatmapImageWriter {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 int value = array[y][x];
-                Color color;
-
-                switch (value) {
-                    case 0:
-                        color = Color.WHITE;
-                        break;
-                    case 1:
-                        color = Color.YELLOW;
-                        break;
-                    case 2:
-                        color = new Color(150, 75, 0); // Brown (não existe no Color padrão)
-                        break;
-                    case 3:
-                        color = Color.RED;
-                        break;
-                    default:
-                        color = Color.BLUE;
-                        break;
-                }
+                Color color = switch (value) {
+                    case 0 -> Color.WHITE;
+                    case 1 -> Color.YELLOW;
+                    case 2 -> new Color(150, 75, 0); // Brown (não existe no Color padrão)
+                    case 3 -> Color.RED;
+                    default -> Color.BLUE;
+                };
 
                 image.setRGB(x, y, color.getRGB());
             }
