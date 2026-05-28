@@ -1,9 +1,13 @@
+# Root
 .idea
-
 out
-
 
 # University/
 University.iml
 University/.*
 University/*.iml
+
+# University/PPROG
+University/PPROG/.*
+University/PPROG/*.iml
+University/PPROG/out
