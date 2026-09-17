@@ -1,3 +1,5 @@
+package src;
+
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -37,7 +39,7 @@ public class naoInterativo {
 
         ensureParentDir(outPath);
 
-        PrintWriter out = new PrintWriter(new File(outPath));
+        PrintWriter out = new PrintWriter(outPath);
 
         dispatchNonInteractive(args, f, out);
 
@@ -149,7 +151,7 @@ public class naoInterativo {
                     return;
                 }
 
-                boolean recorrente = Main.algortimoBurningDhar(A);
+                boolean recorrente = Main.algoritmoBurningDhar(A);
                 out.println(recorrente
                         ? "Pelo Algoritmo de Burning de Dhar a matriz é recorrente."
                         : "Pelo Algoritmo de Burning de Dhar a matriz não é recorrente.");
@@ -191,7 +193,7 @@ public class naoInterativo {
                 int contador = 0;
                 for (int ordem = 0; ordem < total; ordem++) {
                     int[][] M = Main.gerarMatrizEstavel(ordem, d);
-                    if (Main.algortimoBurningDhar(M)) contador++;
+                    if (Main.algoritmoBurningDhar(M)) contador++;
                 }
 
                 long end = System.currentTimeMillis();
@@ -554,12 +556,12 @@ public class naoInterativo {
             return;
         }
 
-        if (!Main.algortimoBurningDhar(A)) {
+        if (!Main.algoritmoBurningDhar(A)) {
             out.println("Erro: A não é recorrente.");
             return;
         }
 
-        if (!Main.algortimoBurningDhar(E)) {
+        if (!Main.algoritmoBurningDhar(E)) {
             out.println("Erro: E não é recorrente.");
             return;
         }
@@ -573,7 +575,7 @@ public class naoInterativo {
 
         for (int ordem = 0; ordem < total; ordem++) {
             int[][] B = Main.gerarMatrizEstavel(ordem, dimensao);
-            if (!Main.algortimoBurningDhar(B)) continue;
+            if (!Main.algoritmoBurningDhar(B)) continue;
 
             int[][] somaEstab = Main.somarEstabilizacao(A, B);
             if (Main.matrizesIguais(somaEstab, E)) {

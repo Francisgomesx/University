@@ -1,3 +1,5 @@
+package src;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -7,6 +9,7 @@ import org.apache.commons.math3.linear.LUDecomposition;       //Biblioteca Apash
 import org.apache.commons.math3.linear.EigenDecomposition;    //Biblioteca Apash Commons
 
 
+@SuppressWarnings("ALL")
 public class Main {
     static Scanner input = new Scanner(System.in);
     static final int ZC = 4;
@@ -809,7 +812,7 @@ public class Main {
             if (!verficarMatrizQuadrada(A)) {
                 System.out.println("Erro: A matriz A não é quadrada (n x n). Tente novamente.");
             } else {
-                matrizAValida = true;;
+                matrizAValida = true;
             }
         }
 
