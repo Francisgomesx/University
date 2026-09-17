@@ -1,0 +1,38 @@
+@startuml
+
+class Trabalhador {
+  - nome : String
+  + getNome() : String
+  + calcularVencimento() : double
+  + toString() : String
+}
+
+class TrabalhadorPeca {
+  - numeroPecasTipo1 : int
+  - numeroPecasTipo2 : int
+  - pagamentoPecaTipo1 : double
+  - pagamentoPecaTipo2 : double
+  + calcularVencimento() : double
+  + toString() : String
+}
+
+class TrabalhadorComissao {
+  - salarioBase : double
+  - vendas : double
+  - percentagemComissao : double
+  + calcularVencimento() : double
+  + toString() : String
+}
+
+class TrabalhadorHora {
+  - pagamentoHora : double
+  - numeroHoras : int
+  + calcularVencimento() : double
+  + toString() : String
+}
+
+Trabalhador <|-- TrabalhadorPeca
+Trabalhador <|-- TrabalhadorComissao
+Trabalhador <|-- TrabalhadorHora
+
+@enduml

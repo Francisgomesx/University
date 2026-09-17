@@ -1,0 +1,121 @@
+@startuml RecordCompanyERD_Optimized
+skinparam linetype ortho
+
+entity "Address" as address {
+ * id : int <<PK>>
+ --
+ street : varchar
+ city : varchar
+ postal_code : varchar
+ country : varchar
+}
+
+entity "Record_Company" as company {
+ * id : int <<PK>>
+ --
+ name : varchar <<UNIQUE>>
+}
+
+entity "Studio" as studio {
+ * id : int <<PK>>
+ --
+ name : varchar
+ address_id : int <<FK>>
+ company_id : int <<FK>>
+}
+
+entity "Instrument" as instrument {
+ * id : int <<PK>>
+ --
+ name : varchar <<UNIQUE>>
+ type : varchar
+}
+
+entity "Musician" as musician {
+ * id : int <<PK>>
+ --
+ name : varchar
+ address_id : int <<FK>>
+ favourite_instrument_id : int <<FK>>
+}
+
+entity "Musician_Instrument" as musinst {
+ * musician_id : int <<FK>>
+ * instrument_id : int <<FK>>
+ * start_date : date <<PK>>
+ --
+ end_date : date
+}
+
+entity "Genre" as genre {
+ * id : int <<PK>>
+ --
+ name : varchar <<UNIQUE>>
+}
+
+entity "Song" as song {
+ * id : int <<PK>>
+ --
+ title : varchar
+ duration_seconds : int
+ genre_id : int <<FK>>
+}
+
+entity "Role" as role {
+ * id : int <<PK>>
+ --
+ designation : varchar <<UNIQUE>>
+}
+
+entity "Album" as album {
+ * code : varchar <<PK>>
+ --
+ title : varchar
+ recording_date : date
+ format : varchar
+ release_date : date
+ studio_id : int <<FK>>
+}
+
+entity "Album_Song" as album_song {
+ * album_code : varchar <<FK>>
+ * song_id : int <<FK>>
+ --
+ track_number : int
+}
+
+entity "Album_Participant" as album_participant {
+ * album_code : varchar <<FK>>
+ * musician_id : int <<FK>>
+ * role_id : int <<FK>>
+}
+
+entity "Song_Musician" as songmus {
+ * song_id : int <<FK>>
+ * musician_id : int <<FK>>
+}
+
+address ||--o{ studio : "localiza"
+company ||--o{ studio : "detém"
+
+address ||--o{ musician : "lives at"
+instrument |o--o{ musician : "favourite"
+
+musician ||--o{ musinst : "plays"
+instrument ||--o{ musinst : "played by"
+
+genre ||--o{ song : "categorizes"
+
+studio ||--o{ album : "recorded in"
+
+album ||--o{ album_song : "contains"
+song ||--o{ album_song : "included in"
+
+album ||--o{ album_participant : "involves"
+musician ||--o{ album_participant : "participates in"
+role ||--o{ album_participant : "role"
+
+song ||--o{ songmus : "performed in"
+musician ||--o{ songmus : "performs on"
+
+@enduml

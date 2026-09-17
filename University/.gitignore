@@ -1,0 +1,28 @@
+# === Compiled Java ===
+*.class
+out/
+target/
+build/
+
+# === IntelliJ IDEA ===
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# === Jupyter ===
+.ipynb_checkpoints/
+
+# === Python (if any venvs show up in notebooks work) ===
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# === OS junk ===
+.DS_Store
+Thumbs.db
+
+# === Logs / temp ===
+*.log
+*.tmp
