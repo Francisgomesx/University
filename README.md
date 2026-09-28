@@ -1,49 +1,26 @@
-<div align="center">
+# University
 
-<br>
-  
-  # University work
+Coursework and projects from my B.Sc. in Computer Engineering (LEI) at ISEP.
+<uma linha: ano corrente, linguagens principais>
 
-<br>
+## Repository map
+| Year | Subject | Content | Stack |
+|------|---------|---------|-------|
+| 1 | APROG  | Weekly exercises + final project (file processing) | Java |
+| 1 | PPROG  | OOP: inheritance, interfaces, exceptions, JavaFX   | Java, Maven, JUnit |
+| 1 | LAPR1  | Team project: matrix stabilization + heatmaps      | Java, Commons Math |
+| 1 | PRCMP  | Shell scripting exercises                          | Bash |
+| 1 | ESTAT  | Statistics notebooks                               | Python, Jupyter |
+| 2 | BDDAD / ESINF | In progress                                 | PlantUML / Java |
 
-</div>
+## Highlighted projects
+<2–3 entradas: problema, abordagem, como executar>
 
-<br>
+## Running the code
+<pré-requisitos: JDK, Maven; comando por tipo de projeto>
 
-<div align="center">
+## Academic integrity
+<nota curta: código de referência, não para reutilização em avaliação>
 
-  ## Subjects
-  
-<br>
-
-</div>
-
-<div align="center">
-  
-  ### APROG -- PRCMP
-
-  ### LAPR1
-
-  ### PPROG -- ESOFT
-
-  ### LAPR2
-
-</div>
-
-<br>
-
-#
-
-<br>
-
-<div align="center">
-
-<span style="color:#627972; font-family:monospace">_Stuff I coded and worked on for my ISEP subjects — exercises, projects, and useful notes._</span>
-
-<br>
-
-<span style="color:#627972; font-family:monospace">_Feel free to have a look around!_</span>
-
-<br>
-
-</div>
+## License
+MIT — see LICENSE
