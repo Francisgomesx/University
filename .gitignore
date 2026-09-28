@@ -1,8 +1,39 @@
-# IDE
-.idea/
-*.iml
-
-# Build output
+# === Compiled Java ===
+*.class
 out/
 target/
-*.class
+build/
+
+# === IntelliJ IDEA ===
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# === Jupyter ===
+.ipynb_checkpoints/
+
+# === Python (if any venvs show up in notebooks work) ===
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# === OS junk ===
+.DS_Store
+Thumbs.db
+
+# === Logs / temp ===
+*.log
+*.tmp
+
+# === Eclipse / VS Code / Kotlin ===
+.classpath
+.project
+.settings/
+.factorypath
+.apt_generated
+.springBeans
+.sts4-cache
+.vscode/
+.kotlin
