@@ -1,13 +1,8 @@
-# Root
-.idea
-out
+# IDE
+.idea/
+*.iml
 
-# University/
-University.iml
-University/.*
-University/*.iml
-
-# University/PPROG
-University/PPROG/.*
-University/PPROG/*.iml
-University/PPROG/out
+# Build output
+out/
+target/
+*.class
