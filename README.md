@@ -1,26 +1,25 @@
 # University
 
-Coursework and projects from my B.Sc. in Computer Engineering (LEI) at ISEP.
-<uma linha: ano corrente, linguagens principais>
+Coursework from my B.Sc. in Computer Engineering (LEI) at ISEP.
+A personal, public archive of exercises and projects.
 
-## Repository map
+## Contents
+
 | Year | Subject | Content | Stack |
 |------|---------|---------|-------|
-| 1 | APROG  | Weekly exercises + final project (file processing) | Java |
-| 1 | PPROG  | OOP: inheritance, interfaces, exceptions, JavaFX   | Java, Maven, JUnit |
-| 1 | LAPR1  | Team project: matrix stabilization + heatmaps      | Java, Commons Math |
-| 1 | PRCMP  | Shell scripting exercises                          | Bash |
-| 1 | ESTAT  | Statistics notebooks                               | Python, Jupyter |
-| 2 | BDDAD / ESINF | In progress                                 | PlantUML / Java |
+| 1 | [APROG](year1/APROG) | Weekly exercises and a final project | Java |
+| 1 | [PPROG](year1/PPROG) | Object-oriented programming, exceptions, JavaFX | Java, Maven, JUnit |
+| 1 | [LAPR1](year1/LAPR1) | Team project: matrix stabilization and heatmaps | Java |
+| 1 | [PRCMP](year1/PRCMP) | Shell scripting | Bash |
+| 1 | [ESTAT](year1/ESTAT) | Statistics notebooks | Python, Jupyter |
+| 2 | [BDDAD](year2/BDDAD) | Database modelling | PlantUML |
+| 2 | [ESINF](year2/ESINF) | Data structures | Java |
 
-## Highlighted projects
-<2–3 entradas: problema, abordagem, como executar>
+## Notes
 
-## Running the code
-<pré-requisitos: JDK, Maven; comando por tipo de projeto>
-
-## Academic integrity
-<nota curta: código de referência, não para reutilização em avaliação>
+- PPROG `Semana7` is unfinished and does not compile.
+- PPROG `Semana7` depends on `Utiliarios`; compile both together from `year1/PPROG`.
 
 ## License
-MIT — see LICENSE
+
+[MIT](LICENSE)
